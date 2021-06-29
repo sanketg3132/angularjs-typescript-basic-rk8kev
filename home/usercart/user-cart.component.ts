@@ -28,8 +28,9 @@ class userCartController implements IController {
   private decreaseQuantity(product) {
     this.totalPayAmount -= product.sellingPrice;
     this.originalPriceTotal -= product.originalPrice;
-    if (product.selectedQuantity != 0) {
+    if (product.selectedQuantity != 1) {
       product.selectedQuantity--;
+      this.onUpdateOrderInCart()(product);
     } else {
       this.onDeleteOrderInCart()(product);
     }
