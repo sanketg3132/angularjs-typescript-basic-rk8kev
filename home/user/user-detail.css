@@ -1,0 +1,16 @@
+.user-detail {
+  display: grid;
+  max-width: 600px;
+  margin: 0 auto;
+  grid-template-columns: repeat(3, minmax(150px, 200px));
+  border: 1px solid #ddd;
+  font-size: 0.75rem;
+}
+.user-detail:hover {
+  background-color: #eee;
+}
+.user-detail .user-detail__name,
+.user-detail .user-detail__city,
+.user-detail .user-detail__email {
+  padding: 0.5rem;
+}
