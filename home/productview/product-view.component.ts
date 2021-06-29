@@ -41,7 +41,7 @@ class ProductController implements IController {
     this.showCart = true;
   }
 
-  private onshowCart = showCart => {
+  private onShowCart = showCart => {
     this.showCart = showCart;
   };
 }

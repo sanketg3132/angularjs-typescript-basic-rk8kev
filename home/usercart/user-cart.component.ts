@@ -9,7 +9,7 @@ class userCartController implements IController {
 
   private onUpdateOrderInCart: () => (product: Product) => void;
   private onDeleteOrderInCart: () => (product: Product) => void;
-  private onshowCart: () => (showCart: boolean) => void;
+  private onShowCart: () => (showCart: boolean) => void;
   cartList: any;
 
   $onInit() {
@@ -22,12 +22,12 @@ class userCartController implements IController {
 
   private close() {
     this.showCart = false;
-    this.onshowCart()(this.showCart);
+    this.onShowCart()(this.showCart);
   }
 
   private decreaseQuantity(product) {
-    this.totalPayAmount += product.sellingPrice * product.selectedQuantity;
-    this.originalPriceTotal += product.originalPrice * product.selectedQuantity;
+    this.totalPayAmount -= product.sellingPrice;
+    this.originalPriceTotal -= product.originalPrice;
     if (product.selectedQuantity != 0) {
       product.selectedQuantity--;
     } else {
@@ -35,8 +35,8 @@ class userCartController implements IController {
     }
   }
   private increaseQuantity(product) {
-    this.totalPayAmount += product.sellingPrice * product.selectedQuantity;
-    this.originalPriceTotal += product.originalPrice * product.selectedQuantity;
+    this.totalPayAmount += product.sellingPrice;
+    this.originalPriceTotal += product.originalPrice;
     product.selectedQuantity++;
     this.onUpdateOrderInCart()(product);
   }
@@ -47,7 +47,7 @@ const userCartComponet: IComponentOptions = {
   template: require('./user-cart.template.html'),
   bindings: {
     cartList: '<',
-    onshowCart: '&',
+    onShowCart: '&',
     onDeleteOrderInCart: '&',
     onUpdateOrderInCart: '&'
   }
