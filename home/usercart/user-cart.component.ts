@@ -34,6 +34,10 @@ class userCartController implements IController {
     } else {
       this.onDeleteOrderInCart()(product);
     }
+    if (this.cartList.length === 0) {
+      this.totalPayAmount = 0;
+      this.originalPriceTotal = 0;
+    }
   }
   private increaseQuantity(product) {
     this.totalPayAmount += product.sellingPrice;
