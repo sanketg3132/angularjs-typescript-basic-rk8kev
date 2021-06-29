@@ -4,7 +4,9 @@ import { Product } from './product';
 
 class ProductController implements IController {
   private productList: Product[] = [];
-
+  private userCartList: Product[] = [];
+  private orders: number = 0;
+  private showCart: boolean = false;
   private static $inject: string[] = ['homeService'];
 
   constructor(private homeService: HomeService) {}
@@ -13,6 +15,35 @@ class ProductController implements IController {
       this.productList = response.data.products;
     });
   }
+
+  private onAddOrderInCart = order => {
+    this.userCartList.push(order);
+    this.orders = this.userCartList.length;
+  };
+
+  private onDeleteOrderInCart = order => {
+    var idx = this.userCartList.indexOf(order);
+    console.log(idx);
+    if (idx >= 0) {
+      this.userCartList.splice(idx, 1);
+    }
+    this.orders = this.userCartList.length;
+  };
+
+  private onUpdateOrderInCart = order => {
+    for (let i = 0; i < this.userCartList.length; i++) {
+      if (this.userCartList[i].id == order.id) {
+        this.userCartList[i] = order;
+      }
+    }
+  };
+  private viewCart() {
+    this.showCart = true;
+  }
+
+  private onshowCart = showCart => {
+    this.showCart = showCart;
+  };
 }
 const productViewComponent: IComponentOptions = {
   controller: ProductController,

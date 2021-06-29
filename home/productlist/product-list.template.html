@@ -1,0 +1,24 @@
+<div class="card">
+<span class="bg-success p-1 rounded text-white"> 20% OFF</span> </span>
+<img src="" alt="Girl in a jacket" width="200" height="100">
+<p>{{$ctrl.product.name}}</p>
+<span>{{$ctrl.product.description}}</span>
+<div class="row">
+  <div class="col-6 text-left">
+    <p class="strike">{{$ctrl.product.originalPrice}}</p>
+    <span>{{$ctrl.product.sellingPrice}}</span>
+  </div>
+  <div class="col-6  p-3">
+    <div class="row" ng-if="!$ctrl.product.isActive">
+      <button type="button" ng-click="$ctrl.decreaseQuantity($ctrl.product)" 
+      class="btn btn-outline-warning button">-</button>
+      <div class="col-4">{{$ctrl.product.selectedQuantity}}</div>
+      <button type="button" ng-click="$ctrl.increaseQuantity($ctrl.product)" 
+      class="btn btn-outline-warning button">+</button>
+    </div> 
+    <div class="row">
+      <button type="button" ng-click="$ctrl.addInCart($ctrl.product)" ng-if="$ctrl.product.isActive" class="btn btn-outline-warning">Add To Cart</button>
+    </div>
+  </div>
+</div>
+</div>

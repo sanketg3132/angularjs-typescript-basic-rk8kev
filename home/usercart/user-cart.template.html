@@ -1,0 +1,73 @@
+<div class="viewcart">
+  <div class="cart-content">
+    <div class="p-3 mb-2 bg-dark text-white">
+      My Cart<span>({{$ctrl.cartList.length}} iteams)</span>
+      <span class="close" ng-click="$ctrl.close()">&times;</span>
+    </div>
+    <div class="row">
+      <div class="col-6">Sub Total</div>
+      <div class="col-6 text-right">{{$ctrl.totalPayAmount}}</div>
+    </div>
+    <div class="row">
+      <div class="col-6">Delivery Charge</div>
+      <div class="col-6 text-right">
+        <span style="color:rgb(0,255,0)">Free</span>
+      </div>
+    </div>
+    <hr />
+    <div class="row">
+      <div class="col-6">Your total Savings</div>
+      <div class="col-6 text-right">
+        <span style="color:rgb(255,0,0)">
+          {{$ctrl.totalPayAmount-$ctrl.originalPriceTotal}}</span
+        >
+      </div>
+    </div>
+    <br /><br />
+    <div class="cartList">
+      <div class="row" ng-repeat="Product in $ctrl.cartList">
+        <div class="col-3">img</div>
+        <div class="col-6 ">
+          <span class="bg-success p-1 rounded text-white">20% off</span><br />
+          <p>{{Product.name}}</p>
+          <div class="row">
+            <div class="col-2 ml-0">
+              <button
+                type="button"
+                ng-click="$ctrl.decreaseQuantity(orderedProduct)"
+                class="btn btn-outline-warning button"
+              >
+                -
+              </button>
+            </div>
+            <div class="col-2">{{Product.selectedQuantity}}</div>
+            <div class="col-2">
+              <button
+                type="button"
+                ng-click="$ctrl.increaseQuantity(orderedProduct)"
+                class="btn btn-outline-warning button"
+              >
+                +
+              </button>
+            </div>
+            <div class="col-6 ">
+              &times; <span>{{Product.sellingPrice}}</span>
+              <span class="strike">{{Product.originalPrice}}</span>
+            </div>
+          </div>
+        </div>
+        <div class="col-3 text-right align-items-end">
+          {{Product.sellingPrice*Product.selectedQuantity}}
+        </div>
+      </div>
+      <div>
+        <button type="button" class="btn btn-success">
+          <div class="row">
+            <div class="col-6">Proceed to Checkout</div>
+            <div class="col-6 text-right">{{$ctrl.totalPayAmount}} ></div>
+          </div>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

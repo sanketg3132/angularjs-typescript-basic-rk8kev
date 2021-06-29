@@ -8,6 +8,7 @@ import { ChildComponent } from './child/child.component';
 import { HomeService } from './home.service';
 import { productViewComponent } from './productview/product-view.component';
 import { productListComponent } from './productlist/product-list.component';
+import { userCartComponet } from './usercart/user-cart.component';
 
 homeModule.component('home', HomeComponent);
 homeModule.component('child', ChildComponent);
@@ -15,4 +16,5 @@ homeModule.component('userDetail', UserDetail);
 homeModule.service('homeService', HomeService);
 homeModule.component('productView', productViewComponent);
 homeModule.component('productList', productListComponent);
+homeModule.component('userCart', userCartComponet);
 export { homeModule };
