@@ -22,7 +22,9 @@ body {
   display: table;
   clear: both;
 }
-
+@mixin padding($padding: 10px) {
+  padding: $padding;
+}
 /* Responsive columns */
 @media screen and (max-width: 600px) {
   .column {
