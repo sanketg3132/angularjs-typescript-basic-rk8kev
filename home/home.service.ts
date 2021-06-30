@@ -1,6 +1,5 @@
 import { IHttpPromise, IHttpService, IPromise } from 'angular';
 import { Product } from './productview/product';
-import { User } from './user/user';
 
 class HomeService {
   private $inject: string[] = ['$http'];
