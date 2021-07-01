@@ -1,57 +1,34 @@
-<div class="row p-1 bg-dark text-white">
-  <div class="col-2 text-center  mt-3">
+<div class="navbar">
+  <div class="navbar__logo">
     <h4>Grofers</h4>
   </div>
-  <div class="col-7 text-center  mt-3">
-    <div class="input-group mb-3">
-      <input
+  <div class="navbar__serachbar">
+    <input
         type="text"
         ng-model="serachData"
-        class="form-control input-group-sm"
+        class="navbar__serachbar_input"
         placeholder="Recipient's username"
         aria-label="Recipient's username"
         aria-describedby="basic-addon2"
       />
-      <div class="input-group-append">
-        <span class="input-group-text" id="basic-addon2">Serach</span>
-      </div>
-    </div>
   </div>
-  <div class="col-2 mt-3 text-right">
+  <div class="navbar__cartButton">
     <button
       ng-click="$ctrl.viewCart()"
       type="button"
-      class="btn btn-outline-success"
-    >
+      class="navbar__cartButton_button">
       Cart <span class="cartitemsno">{{$ctrl.orders}}</span>
     </button>
   </div>
 </div>
-<div class="row">
-  <div class="col-1"></div>
-  <div class="col-10">
-    <div class="row mt-3 ">
-      <div
-        class="column"
-        ng-repeat="product in $ctrl.productList | filter:$ctrl.serachData"
-      >
-        <product-list
-          product="product"
-          serach-data="serachData"
-          on-delete-order-in-cart="$ctrl.onDeleteOrderInCart"
-          on-add-order-in-cart="$ctrl.onAddOrderInCart"
-          on-update-order-in-cart="$ctrl.onUpdateOrderInCart"
-        >
-        </product-list>
-      </div>
+<div class="cards">
+  <div class="cards__row">
+    <div class="cards__row_column" ng-repeat="product in $ctrl.productList | filter:$ctrl.serachData">
+      <product-list product="product" serach-data="serachData" on-delete-order-in-cart="$ctrl.onDeleteOrderInCart"
+        on-add-order-in-cart="$ctrl.onAddOrderInCart" on-update-order-in-cart="$ctrl.onUpdateOrderInCart">
+      </product-list>
     </div>
   </div>
-  <div class="col-1"></div>
 </div>
-<user-cart
-  ng-if="$ctrl.showCart"
-  on-show-cart="$ctrl.onShowCart"
-  cart-list="$ctrl.userCartList"
-  on-delete-order-in-cart="$ctrl.onDeleteOrderInCart"
-  on-update-order-in-cart="$ctrl.onUpdateOrderInCart"
-></user-cart>
+<user-cart ng-if="$ctrl.showCart" on-show-cart="$ctrl.onShowCart" cart-list="$ctrl.userCartList"
+  on-delete-order-in-cart="$ctrl.onDeleteOrderInCart" on-update-order-in-cart="$ctrl.onUpdateOrderInCart"></user-cart>

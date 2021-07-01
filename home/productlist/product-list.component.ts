@@ -12,7 +12,7 @@ class productListController implements IController {
     this.onAddOrderInCart()(order);
   }
   private decreaseQuantity(product) {
-    if (product.selectedQuantity != 0) {
+    if (product.selectedQuantity > 1) {
       product.selectedQuantity--;
       this.onUpdateOrderInCart()(product);
     } else {

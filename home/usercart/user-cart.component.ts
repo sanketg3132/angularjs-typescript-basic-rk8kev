@@ -26,12 +26,14 @@ class userCartController implements IController {
   }
 
   private decreaseQuantity(product) {
+    console.log(product.selectedQuantity);
     this.totalPayAmount -= product.sellingPrice;
     this.originalPriceTotal -= product.originalPrice;
-    if (product.selectedQuantity != 1) {
+    if (product.selectedQuantity > 1) {
       product.selectedQuantity--;
       this.onUpdateOrderInCart()(product);
     } else {
+      product.isActive = true;
       this.onDeleteOrderInCart()(product);
     }
     if (this.cartList.length === 0) {

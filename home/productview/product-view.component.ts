@@ -23,7 +23,6 @@ class ProductController implements IController {
 
   private onDeleteOrderInCart = order => {
     var idx = this.userCartList.indexOf(order);
-    console.log(idx);
     if (idx >= 0) {
       this.userCartList.splice(idx, 1);
     }
