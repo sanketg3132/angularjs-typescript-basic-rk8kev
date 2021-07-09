@@ -23,7 +23,7 @@
 </div>
 <div class="cards">
   <div class="cards__productrow">
-    <div class="cards__productrow_productcolumn" ng-repeat="product in $ctrl.productList | filter:$ctrl.serachData">
+    <div class="cards__productrow_productcolumn" ng-repeat="product in $ctrl.productList | filter:serachData">
       <product-list product="product" serach-data="serachData" on-delete-order-in-cart="$ctrl.onDeleteOrderInCart"
         on-add-order-in-cart="$ctrl.onAddOrderInCart" on-update-order-in-cart="$ctrl.onUpdateOrderInCart">
       </product-list>
